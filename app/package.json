@@ -1,0 +1,19 @@
+{
+  "name": "employees",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CharlieBrownMx/enroute-employees-service.git"
+  },
+  "author": "Esteban Cruz Torres",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlieBrownMx/enroute-employees-service/issues"
+  },
+  "homepage": "https://github.com/CharlieBrownMx/enroute-employees-service#readme"
+}

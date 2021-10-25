@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+      "target": "es2019", 
+      "module": "commonjs",
+      "sourceMap": true,
+      "outDir": "./dist",
+      "rootDir": "./src",
+      /* Strict Type-Checking Options */
+      "strict": true,
+      "noImplicitAny": true,
+      "removeComments": true,
+      /* "downLevelIteration": true, /* This should be tuned on if we start having problems with loop iterations
+      /* Module Resolution Options */
+      "moduleResolution": "node",
+      "baseUrl": "./src",
+      "esModuleInterop": true,
+      /* Advanced Options */
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmitOnError": true /* If a ts file can't be compiled, then any file won't be compiled */
+  },
+  "lib": ["es2015"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

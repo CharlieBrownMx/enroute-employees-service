@@ -2,6 +2,7 @@ import express, { Application } from 'express'
 import { routes } from './routes'
 import errorMiddleware from './middleware/error.middleware'
 import dotenv from 'dotenv'
+import cors from 'cors';
 import db  from './data-access/connection'
 
 class Server {
@@ -34,8 +35,14 @@ class Server {
     }
 
     private loadMiddleware(): void {
+        this.loadCors()
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
+    }
+
+    private loadCors(): void {
+        this.app.use(cors());
+        this.app.options('*', cors);
     }
 
     private loadRoutes(): void {

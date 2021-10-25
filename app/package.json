@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/CharlieBrownMx/enroute-employees-service#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.12",
     "@types/jest": "^26.0.23",
     "@types/node": "^16.11.2",
@@ -40,10 +41,13 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "install": "^0.13.0",
     "joi": "^17.4.0",
     "mysql2": "^2.3.2",
+    "npm": "^8.1.1",
     "sequelize": "^6.7.0"
   }
 }

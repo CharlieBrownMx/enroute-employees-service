@@ -22,7 +22,7 @@ class ResourceNotFoundException extends HttpRequestException {
       error.type || 'ResourceNotFoundException',
       error.message || 'The resource could not be found.',
       error.moreInfo || undefined,
-      error.success || 'false'
+      error.success || false
     )
   }
 }
@@ -34,7 +34,7 @@ class ValidationError extends HttpRequestException {
       error.type || 'ValidationError',
       error.message || 'The Object passed is not valid.',
       error.moreInfo || undefined,
-      error.success || 'false'
+      error.success || false
     )
   }
 }
@@ -46,7 +46,7 @@ class ConflictResponse extends HttpRequestException {
       error.type || 'ConflictResponse',
       error.message || 'The operation might cause a conflict',
       error.moreInfo || undefined,
-      error.success || 'false'
+      error.success || false
     )
   }
 }
@@ -70,7 +70,7 @@ class NotFound extends HttpRequestException {
       error.type || 'NotFound',
       error.message || 'The server has not found anything matching the Request',
       error.moreInfo || undefined,
-      error.success || 'false'
+      error.success || false
     )
   }
 }

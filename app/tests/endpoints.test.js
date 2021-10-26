@@ -153,6 +153,134 @@ describe('POST /employee/add', () => {
   
 });
 
+describe('[FAIL][Wrong birth_date] POST /employee/add', () => {
+    let response;
+
+    beforeAll( async () => {
+        response = await request.post('/employee/add').send(
+            {
+                "birth_date": "1995-10-2a",
+                "first_name": "Esteban",
+                "last_name": "Cruz Torres",
+                "gender": "M",
+                "hire_date": "2019-10-19"
+            }
+        );
+    })
+
+    it('content-type application/json; application/json; charset=utf-8', async () => {
+        expect(response.headers['content-type']).toBe('application/json; charset=utf-8')
+    });
+
+    it('Returns code status 400', async () => {
+        expect(response.status).toBe(400)
+    });
+
+    it('Returns success false', async () => {
+        expect(response.body.success).toBe(false)
+    });
+
+    it('Error type: ValidationError', async () => {
+        expect(response.body.type).toEqual('ValidationError');
+    });
+  
+});
+
+describe('[FAIL][Wrong gender] POST /employee/add', () => {
+    let response;
+
+    beforeAll( async () => {
+        response = await request.post('/employee/add').send(
+            {
+                "birth_date": "1995-10-22",
+                "first_name": "Esteban",
+                "last_name": "Cruz Torres",
+                "gender": "wrong",
+                "hire_date": "2019-10-19"
+            }
+        );
+    })
+
+    it('content-type application/json; application/json; charset=utf-8', async () => {
+        expect(response.headers['content-type']).toBe('application/json; charset=utf-8')
+    });
+
+    it('Returns code status 400', async () => {
+        expect(response.status).toBe(400)
+    });
+
+    it('Returns success false', async () => {
+        expect(response.body.success).toBe(false)
+    });
+
+    it('Error type: ValidationError', async () => {
+        expect(response.body.type).toEqual('ValidationError');
+    });
+  
+});
+
+describe('[FAIL][Wrong hire_date] POST /employee/add', () => {
+    let response;
+
+    beforeAll( async () => {
+        response = await request.post('/employee/add').send(
+            {
+                "birth_date": "1995-10-22",
+                "first_name": "Esteban",
+                "last_name": "Cruz Torres",
+                "gender": "F",
+                "hire_date": "201910-19"
+            }
+        );
+    })
+
+    it('content-type application/json; application/json; charset=utf-8', async () => {
+        expect(response.headers['content-type']).toBe('application/json; charset=utf-8')
+    });
+
+    it('Returns code status 400', async () => {
+        expect(response.status).toBe(400)
+    });
+
+    it('Returns success false', async () => {
+        expect(response.body.success).toBe(false)
+    });
+
+    it('Error type: ValidationError', async () => {
+        expect(response.body.type).toEqual('ValidationError');
+    });
+  
+});
+
+describe('[FAIL][Wrong URL] GET /asdfg', () => {
+    let response;
+
+    beforeAll( async () => {
+        response = await request.get('/asdfg');
+    })
+
+    it('content-type application/json; application/json; charset=utf-8', async () => {
+        expect(response.headers['content-type']).toBe('application/json; charset=utf-8')
+    });
+
+    it('Returns code status 404', async () => {
+        expect(response.status).toBe(404)
+    });
+
+    it('Returns success false', async () => {
+        expect(response.body.success).toBe(false)
+    });
+
+    it('Error type: NotFound', async () => {
+        expect(response.body.type).toEqual('NotFound');
+    });
+
+    it('Error message', async () => {
+        expect(response.body.message).toEqual('The server has not found anything matching the Request');
+    });
+  
+});
+
 afterAll((done) => {
     app.close(done);
 });

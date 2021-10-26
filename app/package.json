@@ -7,7 +7,7 @@
     "production": "node dist/index.js",
     "development": "nodemon",
     "build": "tsc",
-    "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit"
+    "test": "npm run build && jest --no-cache  --detectOpenHandles --runInBand --forceExit"
   },
   "repository": {
     "type": "git",

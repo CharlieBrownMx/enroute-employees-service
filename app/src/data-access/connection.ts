@@ -12,7 +12,8 @@ const db = new Sequelize(database, user, password, {
     host: hostname,
     dialect: 'mysql',
     define: {
-        timestamps: false
+        timestamps: false,
+        charset: 'utf8',
     },
     logging: false
 });

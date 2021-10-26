@@ -7,7 +7,7 @@ const Employee = {
     primaryKey: true
   },
   birth_date: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
   first_name: {
@@ -23,7 +23,7 @@ const Employee = {
     allowNull: false,
   }, 
   hire_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
   }
 };

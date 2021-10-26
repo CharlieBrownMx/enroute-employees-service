@@ -12,11 +12,11 @@ const Title = {
     primaryKey: true
   },
   from_date: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
   to_date: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: true,
   }
 };

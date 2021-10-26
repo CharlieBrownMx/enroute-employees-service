@@ -25,6 +25,16 @@ describe('GET /employeesExample', () => {
     it('Body of type array', async () => {
         expect(Array.isArray(response.body.data)).toBeTruthy()
     });
+
+    it('Hire date in range', async () => {
+        expect(response.body.data.some((item) => {
+            let hire_date = Date(item.hire_date);
+            let from_date = Date('1990-01-01')
+            let to_date = Date('1990-01-15')
+            return hire_date < from_date || hire_date > to_date 
+        })).toBe(false)
+    });
+
   
 });
 
@@ -71,7 +81,7 @@ describe('GET /employee/:${emp_no}/titles', () => {
     let response;
 
     beforeAll( async () => {
-        response = await request.get('/employee/50000/titles');
+        response = await request.get('/employee/42030/titles');
     })
 
     it('content-type application/json; application/json; charset=utf-8', async () => {
@@ -91,21 +101,34 @@ describe('GET /employee/:${emp_no}/titles', () => {
             expect.arrayContaining([
                 expect.objectContaining(
                     {
-                        "from_date": "1999-02-20",
+                        "from_date": "1996-10-19",
                         "to_date": "9999-01-01",
-                        "title": "Senior Engineer"
-                    }
+                        "title": "Senior Staff"
+                    },
                 ),
                 expect.objectContaining(
                     {
-                        "from_date": "1994-02-20",
-                        "to_date": "1999-02-20",
-                        "title": "Engineer"
+                        "from_date": "1987-10-20",
+                        "to_date": "1996-10-19",
+                        "title": "Staff"
                     }
                 )
             ])
         );
         expect(Array.isArray(response.body.data)).toBeTruthy()
+    });
+
+    it('Data in desc chronological order', async () => {
+        let crhonological = true;
+        for(let i = 0; i < (response.body.data.length - 1); i++) {
+            let date1 = Date(response.body.data[i].from_date);
+            let date2 = Date(response.body.data[i + 1].from_date);
+            if( date1 > date2 ) {
+                crhonological = false;
+                break
+            }
+        }
+        expect(crhonological).toBe(true)
     });
   
 });

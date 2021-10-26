@@ -33,6 +33,7 @@ const getEmployeeByIdController: RequestHandler = async (req, res, next) => {
         }
         case 'ValidationError': {
           next(new ValidationError(errorData))
+          break
         }
         default: {
           next(new HttpUnkownException(errorData))

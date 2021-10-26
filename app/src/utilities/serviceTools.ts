@@ -6,12 +6,12 @@ class ServiceTools {
       emp_no: Joi.number()
         .min(1)
         .required()
-        .error(new Error("The parameter 'id' must be a number")),
-      birth_date: Joi.date().required().error(new Error("Date format should be: 'YYYY-MM-DD'")),
+        .error(new Error('The parameter \'id\' must be a number')),
+      birth_date: Joi.date().required().error(new Error('Date format should be: \'YYYY-MM-DD\'')),
       first_name: Joi.string().min(1).max(14).required(),
       last_name: Joi.string().min(1).max(16).required(),
       gender: Joi.string().valid('M', 'F'),
-      hire_date: Joi.date().required().error(new Error("Date format should be: 'YYYY-MM-DD'")),
+      hire_date: Joi.date().required().error(new Error('Date format should be: \'YYYY-MM-DD\'')),
     }).validate(employee)
   }
 
@@ -19,7 +19,7 @@ class ServiceTools {
     return Joi.number()
       .min(1)
       .required()
-      .error(new Error("The parameter 'id' must be a number"))
+      .error(new Error('The parameter \'id\' must be a number'))
       .validate(id)
   }
 }

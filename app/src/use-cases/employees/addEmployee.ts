@@ -11,12 +11,12 @@ export const addEmployee = async (
   const { employeeId } = await getEmployeeId();
   
   const employee = {
-    "emp_no": (employeeId as number) + 1,
-    "birth_date": birth_date,
-    "first_name": first_name,
-    "last_name": last_name,
-    "gender": gender,
-    "hire_date": hire_date,
+    'emp_no': (employeeId as number) + 1,
+    'birth_date': birth_date,
+    'first_name': first_name,
+    'last_name': last_name,
+    'gender': gender,
+    'hire_date': hire_date,
   }
 
   const { error } = ServiceTools.validateEmployee(employee)

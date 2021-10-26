@@ -1,15 +1,15 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes } from "sequelize";
 
 const Title = {
   emp_no: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   from_date: {
     type: DataTypes.DATEONLY,
@@ -18,7 +18,7 @@ const Title = {
   to_date: {
     type: DataTypes.DATEONLY,
     allowNull: true,
-  }
+  },
 };
 
-export default Title
+export default Title;

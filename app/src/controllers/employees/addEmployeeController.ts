@@ -1,49 +1,60 @@
-import { RequestHandler } from 'express'
-import { addEmployee } from './.././../use-cases/employees/addEmployee'
+import { RequestHandler } from "express";
+import { addEmployee } from "./.././../use-cases/employees/addEmployee";
 
-import { ResourceNotFoundException, HttpUnkownException, ValidationError } from '../../exceptions/HttpRequestExceptions'
-
+import {
+  ResourceNotFoundException,
+  HttpUnkownException,
+  ValidationError,
+} from "../../exceptions/HttpRequestExceptions";
 
 const addEmployeeController: RequestHandler = async (req, res, next) => {
   try {
-    const { birth_date, first_name, last_name, gender, hire_date } = req.body
-    const { error , response }  = await addEmployee(birth_date, first_name, last_name, gender, hire_date)
+    const { birth_date, first_name, last_name, gender, hire_date } = req.body;
+    const { error, response } = await addEmployee(
+      birth_date,
+      first_name,
+      last_name,
+      gender,
+      hire_date
+    );
 
     if (!error) {
       const responseData = {
         status: 200,
-        data: response || 'No data was return',
+        data: response || "No data was return",
         success: true,
-      }
+      };
 
-      res.status(responseData.status).send(responseData)
+      res.status(responseData.status).send(responseData);
     } else {
       const errorData = {
-        status: (error as any).statusCode ? (error as any).statusCode : undefined,
+        status: (error as any).statusCode
+          ? (error as any).statusCode
+          : undefined,
         code: (error as any).code ? (error as any).code : undefined,
         message: (error as any).message ? (error as any).message : undefined,
         moreInfo: (error as any).moreInfo ? (error as any).moreInfo : undefined,
         success: (error as any).success ? (error as any).success : undefined,
-      }
+      };
       switch (errorData.code) {
-        case 'ResourceNotFoundException': {
-          next(new ResourceNotFoundException())
-          break
+        case "ResourceNotFoundException": {
+          next(new ResourceNotFoundException());
+          break;
         }
-        case 'ValidationError': {
-          next(new ValidationError(errorData))
+        case "ValidationError": {
+          next(new ValidationError(errorData));
         }
         default: {
-          next(new HttpUnkownException(errorData))
-          break
+          next(new HttpUnkownException(errorData));
+          break;
         }
       }
-      return
+      return;
     }
   } catch (error) {
-    next(new HttpUnkownException(error))
-    return
+    next(new HttpUnkownException(error));
+    return;
   }
-}
+};
 
-export default addEmployeeController
+export default addEmployeeController;
